@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment # Pod, Job, Service
+metadata:
+  name: second-app-deployment # deployment name, like "first-app" in previous sections
+spec:
+  replicas: 3 # Running Pods
+  selector:
+    matchLabels:
+      app: second-app # Tels which Pods belong to it
+      tier: backend # Tels which Pods belong to it
+  template:
+    metadata:
+      labels:
+        app: second-app # Label name "app", Tels which Pods belong to it
+        tier: backend # Tels which Pods belong to it
+    spec:
+      containers:
+        - name: second-node
+          image: andriizilnyk/kub-first-app # --image=...
+#        - name: second-node
+#          image: andriizilnyk/kub-first-app # --image=...

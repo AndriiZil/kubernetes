@@ -1,5 +1,14 @@
 # Services
 
+### Default Service
+```bash
+    kubectl get services
+```
+- Output
+```bash
+    NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+    kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   25h
+```
 ### Create Service
 ```bash
     kubectl expose deployment first-app --type=LoadBalancer --port=8080
