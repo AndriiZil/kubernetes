@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: host-pv # random name
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem # Block
+  storageClassName: standard # the name from kubectl get sc
+  accessModes:
+    - ReadWriteOnce
+#    - ReadOnlyMany
+#    - ReadWriteMany
+  hostPath:
+    path: /data
+    type: DirectoryOrCreate

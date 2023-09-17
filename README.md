@@ -12,9 +12,16 @@
 10. [Labels & Selectors](10_labels_&_selectors/README.md)
 11. [Liveness Probes](11_liveness_probes/README.md)
 12. [Configuration Options](12_configuration_options/README.md)
-13. []()
-14. []()
-15. []()
+13. [Volumes](13_volumes/README.md)
+14. [Volume emptyDir](14_volume_emptyDir/README.md)
+15. [Volume hostPath](15_volume_hostPath/README.md)
+
+### Start minikube & check status
+```bash
+  minikube start
+  
+  minikube status
+```
 
 ### Remove resources
 ```bash

@@ -1,4 +1,4 @@
-# Docker Compose
+# Volume emtryDir (attached to the Pod and Pod lifecycle)
 
 - Works good only with `replica: 1`
 
