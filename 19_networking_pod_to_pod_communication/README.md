@@ -2,7 +2,7 @@
 
 ### Apply
 ```bash
-  kubectl apply -f=auth-deployment.yaml -f=auth-service.yaml -f=users-deployment.yaml -f=users-service.yaml
+  kubectl apply -f=auth-deployment.yaml -f=auth-service.yaml -f=users-deployment.yaml -f=users-service.yaml -f=tasks-deployment.yaml -f=tasks-service.yaml 
 ```
 ```bash
   deployment.apps/auth-deployment created
@@ -52,4 +52,34 @@
 - Changes in `users-deployment.yaml` to `value: "auth-service.default"`
 ```bash
    kubectl apply -f=users-deployment.yaml
+```
+### Deploy `tasks-api` (cd `tasks-api`)
+```bash
+  docker build -t andriizilnyk/tasks-demo .
+  
+  docker push andriizilnyk/tasks-demo:latest
+```
+- Apply
+```bash
+   kubectl apply -f=tasks-deployment.yaml
+   
+   kubectl apply -f=tasks-service.yaml
+   
+   minikube service tasks-service
+```
+- Check
+```bash
+  kubectl get pods 
+```
+```bash
+  NAME                                READY   STATUS    RESTARTS   AGE
+  auth-deployment-7c548c4947-ngpfs    1/1     Running   0          59m
+  tasks-deployment-6cc8fff7ff-nn2b7   1/1     Running   0          7s
+  users-deployment-58f8f94c49-7595d   1/1     Running   0          19m
+```
+### In order to check logs
+```bash
+  kubectl logs `<pod name>`
+  
+  kubectl logs tasks-deployment-6cc8fff7ff-nn2b7
 ```

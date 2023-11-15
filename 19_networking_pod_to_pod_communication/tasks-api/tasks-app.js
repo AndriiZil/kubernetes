@@ -5,7 +5,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
-const filePath = path.join(__dirname, process.env.TASKS_FOLDER, 'tasks.txt');
+const tasksFolder = process.env.TASKS_FOLDER;
+
+if (!fs.existsSync(tasksFolder)){
+  fs.mkdirSync(tasksFolder, { recursive: true });
+}
+
+const filePath = path.join(__dirname, tasksFolder, 'tasks.txt');
 
 const app = express();
 
@@ -17,7 +23,7 @@ const extractAndVerifyToken = async (headers) => {
   }
   const token = headers.authorization.split(' ')[1]; // expects Bearer TOKEN
 
-  const response = await axios.get('http://auth/verify-token/' + token);
+  const response = await axios.get(`http://${process.env.AUTH_ADDRESS}/verify-token/${token}`);
   return response.data.uid;
 };
 
@@ -45,10 +51,11 @@ app.get('/tasks', async (req, res) => {
 app.post('/tasks', async (req, res) => {
   try {
     const uid = await extractAndVerifyToken(req.headers); // we don't really need the uid
-    const text = req.body.text;
-    const title = req.body.title;
+    const { text, title } = req.body;
+
     const task = { title, text };
     const jsonTask = JSON.stringify(task);
+
     fs.appendFile(filePath, jsonTask + 'TASK_SPLIT', (err) => {
       if (err) {
         console.log(err);
