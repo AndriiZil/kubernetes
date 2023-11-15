@@ -15,12 +15,18 @@
 13. [Volumes](13_volumes/README.md)
 14. [Volume emptyDir](14_volume_emptyDir/README.md)
 15. [Volume hostPath](15_volume_hostPath/README.md)
+16. [Persistent Volume](16_persistent_volume/README.md)
+17. [Environment Variables](17_environment_variables/README.md)
+18. [Networking Pod Internal Communication](18_networking_pod_internal_communication/README.md)
+19. [Networking Pod To Pod Communication](19_networking_pod_to_pod_communication/README.md)
 
 ### Start minikube & check status
 ```bash
   minikube start
   
   minikube status
+  
+  minikube dashboard
 ```
 
 ### Remove resources
