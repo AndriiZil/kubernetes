@@ -19,8 +19,9 @@
 17. [Environment Variables](17_environment_variables/README.md)
 18. [Networking Pod Internal Communication](18_networking_pod_internal_communication/README.md)
 19. [Networking Pod To Pod Communication](19_networking_pod_to_pod_communication/README.md)
+20. [Networking with frontend](20_networking_frontend/README.md)
 
-### Start minikube & check status
+### Start minikube & check status, run dashboard
 ```bash
   minikube start
   
@@ -29,7 +30,24 @@
   minikube dashboard
 ```
 
-### Remove resources
+### Get deployments
+```bash
+  kubectl get deployments
+```
+### Get Services
+```bash
+  kubectl get services
+```
+### Get Pods
+```bash
+  kubectl get pods
+```
+### Get logs by the specific pod
+```bash
+  kubectl logs tasks-deployment-6cc8fff7ff-96bzt
+```
+
+### Remove all resources
 ```bash
   kubectl delete all --all
 ```
