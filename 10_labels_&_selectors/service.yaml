@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: backend
   labels:
-    group: example # The same in deployment.yaml file
+    group: example # The same in 1-deployment.yaml file
 spec:
   selector:
     app: second-app

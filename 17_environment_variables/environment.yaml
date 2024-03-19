@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: data-store-env
 data:
-  folder: 'story' # key from deployment.yaml
+  folder: 'story' # key from 1-deployment.yaml
   # key: value..
